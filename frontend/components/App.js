@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
+import Form from './Form'
 const URL = 'http://localhost:9000/api/todos'
 
 
@@ -8,7 +9,8 @@ export default class App extends React.Component {
 
   state = {
     todos: [],
-    message: ''
+    message: '',
+    input: ''
   }
   componentDidMount() {
     axios.get(URL)
@@ -34,6 +36,8 @@ export default class App extends React.Component {
           const { id, name, completed } = todo
           return <p key={id}>{name} {completed ? '✔️' : ''}</p>
         })}
+        <br/>
+        <Form value={this.state.value}/>
       </div>
     )
   }
